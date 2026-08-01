@@ -1,5 +1,5 @@
 import { useState, useCallback } from 'react'
-import { supabase } from '../lib/supabase'
+import { isSupabaseConfigured, supabase } from '../lib/supabase'
 import type { Rsvp, RsvpInsert } from '../types/rsvp.types'
 
 /**
@@ -34,6 +34,11 @@ export function useRsvps() {
 
   /** Insere um novo RSVP (público, anon) */
   const submitRsvp = useCallback(async (rsvp: RsvpInsert): Promise<boolean> => {
+    if (!isSupabaseConfigured) {
+      setError('Confirmação indisponível no momento. Tente mais tarde.')
+      return false
+    }
+
     setLoading(true)
     setError(null)
 
