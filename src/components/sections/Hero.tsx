@@ -4,7 +4,6 @@ import { EVENT_CONFIG, HERO_IMAGES } from '../../config/event'
 import { useMemo } from 'react'
 
 export function Hero() {
-  // Gera partículas douradas aleatórias
   const particles = useMemo(
     () =>
       Array.from({ length: 24 }, (_, i) => ({
@@ -21,9 +20,8 @@ export function Hero() {
   return (
     <section
       id="hero"
-      className="relative min-h-screen flex items-center justify-center overflow-hidden py-16 md:py-24"
+      className="relative min-h-[100svh] flex items-center justify-center overflow-hidden"
     >
-      {/* Background image */}
       <motion.div
         initial={{ scale: 1.08 }}
         animate={{ scale: 1 }}
@@ -37,10 +35,8 @@ export function Hero() {
         />
       </motion.div>
 
-      {/* Gradient overlay */}
       <div className="absolute inset-0 overlay-gradient-red" />
 
-      {/* Golden particles */}
       <div className="absolute inset-0 pointer-events-none overflow-hidden z-10">
         {particles.map((p) => (
           <span
@@ -59,34 +55,30 @@ export function Hero() {
         ))}
       </div>
 
-      {/* Content */}
-      <div className="relative z-20 text-center section-container flex flex-col items-center px-4 pt-8 pb-20">
-        {/* Top spark */}
+      <div className="relative z-20 section-container flex flex-col items-center text-center pt-16 pb-24">
         <motion.div
           initial={{ opacity: 0, scale: 0 }}
           animate={{ opacity: 1, scale: 1 }}
           transition={{ duration: 1, delay: 0.2 }}
-          className="text-accent-400 mb-4 sm:mb-5"
+          className="text-accent-400 mb-4"
         >
-          <Sparkles size={28} className="mx-auto" />
+          <Sparkles size={24} className="mx-auto" />
         </motion.div>
 
-        {/* "Você está convidado(a)" */}
         <motion.p
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.4 }}
-          className="text-white/90 font-display italic text-base sm:text-xl md:text-2xl tracking-wide mb-3 px-2"
+          className="text-white/90 font-display italic text-base sm:text-xl tracking-wide mb-2"
         >
           Você está convidado(a) para celebrar os
         </motion.p>
 
-        {/* "15 anos" */}
         <motion.div
           initial={{ opacity: 0, scale: 0.8 }}
           animate={{ opacity: 1, scale: 1 }}
           transition={{ duration: 0.8, delay: 0.6 }}
-          className="my-2 flex items-baseline justify-center gap-2"
+          className="flex items-baseline justify-center gap-2"
         >
           <span className="text-shimmer font-display text-6xl sm:text-8xl md:text-9xl font-extrabold tracking-wider">
             15
@@ -96,43 +88,39 @@ export function Hero() {
           </span>
         </motion.div>
 
-        {/* Decorative divider */}
         <motion.div
           initial={{ scaleX: 0 }}
           animate={{ scaleX: 1 }}
           transition={{ duration: 1, delay: 0.8 }}
-          className="mx-auto my-5 sm:my-6 h-[1px] w-32 md:w-48 bg-gradient-to-r from-transparent via-accent-400 to-transparent"
+          className="my-5 h-px w-28 sm:w-40 bg-gradient-to-r from-transparent via-accent-400 to-transparent"
         />
 
-        {/* Name */}
         <motion.h1
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 1, delay: 1 }}
-          className="font-script text-4xl sm:text-6xl md:text-7xl lg:text-8xl text-white drop-shadow-2xl leading-tight px-2"
+          className="font-script text-4xl sm:text-6xl md:text-7xl text-white drop-shadow-2xl leading-tight"
         >
           {EVENT_CONFIG.name}
         </motion.h1>
 
-        {/* Parents' names */}
         <motion.p
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ duration: 0.8, delay: 1.4 }}
-          className="text-white/70 text-xs sm:text-sm font-[Poppins] font-light mt-5 sm:mt-6 tracking-wider uppercase px-4"
+          className="text-white/70 text-xs sm:text-sm font-[Poppins] font-light mt-5 tracking-[0.15em] uppercase max-w-md"
         >
           Com os pais {EVENT_CONFIG.parents}
         </motion.p>
       </div>
 
-      {/* Scroll indicator */}
       <motion.div
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ delay: 2 }}
-        className="absolute bottom-8 left-1/2 -translate-x-1/2 scroll-indicator z-20"
+        className="absolute bottom-6 left-1/2 -translate-x-1/2 scroll-indicator z-20"
       >
-        <ChevronDown size={32} className="text-white/60" />
+        <ChevronDown size={28} className="text-white/60" />
       </motion.div>
     </section>
   )

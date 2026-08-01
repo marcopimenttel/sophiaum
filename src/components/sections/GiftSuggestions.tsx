@@ -61,50 +61,43 @@ const GIFTS_WITH_LUCIDE: GiftItem[] = [
 export function GiftSuggestions() {
   return (
     <section id="gifts" className="page-section bg-white">
-      <div className="section-container flex flex-col items-center">
+      <div className="section-container">
         <SectionTitle subtitle="Caso queira presentear a aniversariante">
           Sugestões de Presente
         </SectionTitle>
 
-        <div className="flex flex-wrap justify-center gap-5 w-full max-w-6xl">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
           {GIFTS_WITH_LUCIDE.map((gift, index) => {
             const Icon = gift.icon
             return (
-              <ScrollReveal
-                key={gift.title}
-                delay={index * 0.05}
-                className="w-full sm:w-[calc(50%-0.625rem)] lg:w-[calc(25%-0.9375rem)]"
-              >
+              <ScrollReveal key={gift.title} delay={index * 0.04} className="h-full">
                 <motion.div
-                  whileHover={{ y: -6, scale: 1.02 }}
-                  whileTap={{ scale: 0.98 }}
-                  className="h-full min-h-[240px] p-6 sm:p-7 rounded-2xl sm:rounded-3xl bg-neutral-50/90 border border-neutral-200/80 hover:border-primary-400 hover:shadow-xl hover:shadow-primary-600/10 transition-all duration-300 flex flex-col justify-between items-center text-center group"
+                  whileHover={{ y: -4 }}
+                  className="h-full min-h-[220px] p-5 sm:p-6 rounded-2xl bg-neutral-50 border border-neutral-200 hover:border-primary-300 hover:shadow-lg transition-all duration-300 flex flex-col items-center text-center group"
                 >
-                  <div className="flex flex-col items-center w-full">
-                    <div className="w-14 h-14 sm:w-16 sm:h-16 rounded-2xl bg-gradient-to-br from-primary-100 to-secondary-100 border border-primary-200/60 flex items-center justify-center mb-5 group-hover:from-primary-600 group-hover:to-primary-700 transition-colors duration-300 shadow-sm shrink-0">
-                      <Icon size={28} className="text-primary-600 group-hover:text-white transition-colors duration-300" />
-                    </div>
-
-                    <h3 className="font-[Poppins] font-bold text-lg sm:text-xl text-neutral-900 mb-2">
-                      {gift.title}
-                    </h3>
-
-                    {gift.details && (
-                      <p className="text-sm text-neutral-500 font-[Poppins] leading-relaxed px-1">
-                        {gift.details}
-                      </p>
-                    )}
+                  <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-primary-50 to-secondary-50 border border-primary-100 flex items-center justify-center mb-4 group-hover:from-primary-600 group-hover:to-primary-700 transition-colors duration-300">
+                    <Icon size={22} className="text-primary-600 group-hover:text-white transition-colors duration-300" />
                   </div>
 
-                  <div className="mt-5 pt-4 border-t border-neutral-200/60 w-full">
+                  <h3 className="font-[Poppins] font-semibold text-base sm:text-lg text-neutral-900 mb-1.5">
+                    {gift.title}
+                  </h3>
+
+                  {gift.details && (
+                    <p className="text-sm text-neutral-500 font-[Poppins] leading-relaxed flex-1">
+                      {gift.details}
+                    </p>
+                  )}
+
+                  <div className="mt-4 pt-4 border-t border-neutral-200 w-full space-y-2">
                     {gift.stores && (
-                      <p className="text-xs sm:text-sm text-primary-700 font-[Poppins] font-semibold leading-snug">
+                      <p className="text-xs text-primary-700 font-[Poppins] font-semibold leading-snug">
                         {gift.stores}
                       </p>
                     )}
                     {gift.note && (
-                      <p className="text-xs text-amber-700 font-[Poppins] font-medium flex items-center justify-center gap-1.5 mt-3 bg-amber-50 py-2 px-3 rounded-xl border border-amber-200/70">
-                        <AlertCircle size={14} className="shrink-0" />
+                      <p className="text-xs text-amber-800 font-[Poppins] font-medium inline-flex items-center justify-center gap-1.5 bg-amber-50 py-1.5 px-2.5 rounded-lg border border-amber-200">
+                        <AlertCircle size={12} className="shrink-0" />
                         <span>{gift.note}</span>
                       </p>
                     )}

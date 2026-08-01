@@ -12,6 +12,9 @@ interface TextAreaProps extends TextareaHTMLAttributes<HTMLTextAreaElement> {
   variant?: 'light' | 'dark'
 }
 
+const fieldBase =
+  'w-full rounded-xl text-[15px] sm:text-base font-[Poppins] transition-all duration-200 focus:outline-none'
+
 export function Input({ label, error, id, variant = 'light', className = '', ...props }: InputProps) {
   const inputId = id || label.toLowerCase().replace(/\s/g, '-')
   const isDark = variant === 'dark'
@@ -20,8 +23,8 @@ export function Input({ label, error, id, variant = 'light', className = '', ...
     <div className="w-full text-left">
       <label
         htmlFor={inputId}
-        className={`block text-xs sm:text-sm font-semibold uppercase tracking-wider mb-2.5 font-[Poppins] ${
-          isDark ? 'text-neutral-200' : 'text-neutral-700'
+        className={`block text-xs font-semibold uppercase tracking-[0.12em] mb-2 font-[Poppins] ${
+          isDark ? 'text-neutral-300' : 'text-neutral-600'
         }`}
       >
         {label}
@@ -29,22 +32,21 @@ export function Input({ label, error, id, variant = 'light', className = '', ...
       <input
         id={inputId}
         className={`
-          w-full px-4 sm:px-5 py-3.5 sm:py-4 rounded-2xl text-base font-[Poppins] min-h-[52px] sm:min-h-[56px]
-          transition-all duration-300 shadow-md
+          ${fieldBase}
+          px-4 py-3.5 min-h-[48px] sm:min-h-[52px]
           ${
             isDark
-              ? 'bg-neutral-900/90 border-2 border-neutral-700 text-white placeholder:text-neutral-500 focus:bg-neutral-900 focus:border-primary-400 focus:ring-4 focus:ring-primary-500/20'
-              : 'bg-white border-2 border-neutral-200 text-neutral-900 placeholder:text-neutral-400 focus:bg-white focus:border-primary-600 focus:ring-4 focus:ring-primary-100'
+              ? 'bg-neutral-900 border border-neutral-700 text-white placeholder:text-neutral-500 focus:border-primary-400 focus:ring-2 focus:ring-primary-500/25'
+              : 'bg-white border border-neutral-200 text-neutral-900 placeholder:text-neutral-400 focus:border-primary-500 focus:ring-2 focus:ring-primary-100'
           }
-          focus:outline-none
-          ${error ? (isDark ? 'border-red-400 ring-4 ring-red-400/20' : 'border-red-500 ring-4 ring-red-100') : ''}
+          ${error ? (isDark ? 'border-red-400 focus:ring-red-400/20' : 'border-red-500 focus:ring-red-100') : ''}
           ${className}
         `}
         {...props}
       />
       {error && (
-        <p className="mt-2 text-xs sm:text-sm text-red-400 font-[Poppins] font-medium flex items-center gap-1.5">
-          <span>⚠️</span> {error}
+        <p className={`mt-1.5 text-xs font-[Poppins] font-medium ${isDark ? 'text-red-300' : 'text-red-600'}`}>
+          {error}
         </p>
       )}
     </div>
@@ -59,8 +61,8 @@ export function TextArea({ label, error, id, variant = 'light', className = '', 
     <div className="w-full text-left">
       <label
         htmlFor={inputId}
-        className={`block text-xs sm:text-sm font-semibold uppercase tracking-wider mb-2.5 font-[Poppins] ${
-          isDark ? 'text-neutral-200' : 'text-neutral-700'
+        className={`block text-xs font-semibold uppercase tracking-[0.12em] mb-2 font-[Poppins] ${
+          isDark ? 'text-neutral-300' : 'text-neutral-600'
         }`}
       >
         {label}
@@ -69,22 +71,21 @@ export function TextArea({ label, error, id, variant = 'light', className = '', 
         id={inputId}
         rows={3}
         className={`
-          w-full px-4 sm:px-5 py-3.5 sm:py-4 rounded-2xl text-base font-[Poppins] resize-none
-          transition-all duration-300 shadow-md
+          ${fieldBase}
+          px-4 py-3.5 resize-none
           ${
             isDark
-              ? 'bg-neutral-900/90 border-2 border-neutral-700 text-white placeholder:text-neutral-500 focus:bg-neutral-900 focus:border-primary-400 focus:ring-4 focus:ring-primary-500/20'
-              : 'bg-white border-2 border-neutral-200 text-neutral-900 placeholder:text-neutral-400 focus:bg-white focus:border-primary-600 focus:ring-4 focus:ring-primary-100'
+              ? 'bg-neutral-900 border border-neutral-700 text-white placeholder:text-neutral-500 focus:border-primary-400 focus:ring-2 focus:ring-primary-500/25'
+              : 'bg-white border border-neutral-200 text-neutral-900 placeholder:text-neutral-400 focus:border-primary-500 focus:ring-2 focus:ring-primary-100'
           }
-          focus:outline-none
-          ${error ? (isDark ? 'border-red-400 ring-4 ring-red-400/20' : 'border-red-500 ring-4 ring-red-100') : ''}
+          ${error ? (isDark ? 'border-red-400 focus:ring-red-400/20' : 'border-red-500 focus:ring-red-100') : ''}
           ${className}
         `}
         {...props}
       />
       {error && (
-        <p className="mt-2 text-xs sm:text-sm text-red-400 font-[Poppins] font-medium flex items-center gap-1.5">
-          <span>⚠️</span> {error}
+        <p className={`mt-1.5 text-xs font-[Poppins] font-medium ${isDark ? 'text-red-300' : 'text-red-600'}`}>
+          {error}
         </p>
       )}
     </div>

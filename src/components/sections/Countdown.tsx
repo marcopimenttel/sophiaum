@@ -12,22 +12,22 @@ interface CountdownCardProps {
 function CountdownCard({ value, label, index }: CountdownCardProps) {
   return (
     <motion.div
-      initial={{ opacity: 0, y: 30 }}
+      initial={{ opacity: 0, y: 24 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true }}
-      transition={{ duration: 0.5, delay: index * 0.1 }}
-      className="glass rounded-2xl sm:rounded-3xl px-3 py-5 sm:p-6 md:p-8 text-center flex-1 min-w-[72px] max-w-[140px] sm:max-w-[160px] border border-white/25 shadow-2xl backdrop-blur-2xl"
+      transition={{ duration: 0.45, delay: index * 0.08 }}
+      className="glass rounded-2xl px-2 py-4 sm:px-4 sm:py-6 text-center border border-white/20"
     >
       <motion.span
         key={value}
-        initial={{ scale: 1.25, opacity: 0 }}
+        initial={{ scale: 1.2, opacity: 0 }}
         animate={{ scale: 1, opacity: 1 }}
         transition={{ type: 'spring', stiffness: 300, damping: 20 }}
-        className="block font-display text-3xl sm:text-5xl md:text-6xl font-bold text-white tracking-tight"
+        className="block font-display text-2xl sm:text-4xl md:text-5xl font-bold text-white tracking-tight tabular-nums"
       >
         {String(value).padStart(2, '0')}
       </motion.span>
-      <span className="block mt-2 sm:mt-3 text-[10px] sm:text-xs md:text-sm text-accent-300 font-[Poppins] font-bold uppercase tracking-widest">
+      <span className="block mt-2 text-[10px] sm:text-xs text-accent-300 font-[Poppins] font-semibold uppercase tracking-[0.14em]">
         {label}
       </span>
     </motion.div>
@@ -38,11 +38,7 @@ export function Countdown() {
   const { days, hours, minutes, seconds, isExpired } = useCountdown(EVENT_CONFIG.date)
 
   return (
-    <section
-      id="countdown"
-      className="relative page-section overflow-hidden bg-neutral-950"
-    >
-      {/* Background image */}
+    <section id="countdown" className="relative page-section overflow-hidden bg-neutral-950">
       <div className="absolute inset-0 pointer-events-none">
         <img
           src={HERO_IMAGES[1]}
@@ -55,13 +51,13 @@ export function Countdown() {
 
       <div className="section-container relative z-10 flex flex-col items-center text-center">
         <ScrollReveal>
-          <p className="text-center text-accent-400 font-[Poppins] font-bold text-xs sm:text-sm md:text-base uppercase tracking-[0.3em] sm:tracking-[0.35em] mb-8 sm:mb-10">
+          <p className="text-accent-400 font-[Poppins] font-semibold text-xs sm:text-sm uppercase tracking-[0.28em] mb-8">
             {isExpired ? 'O grande dia chegou!' : 'Contagem Regressiva'}
           </p>
         </ScrollReveal>
 
         {!isExpired && (
-          <div className="flex justify-center items-stretch gap-2.5 sm:gap-5 md:gap-6 w-full max-w-2xl mx-auto px-1">
+          <div className="grid grid-cols-4 gap-2 sm:gap-4 w-full max-w-xl mx-auto">
             <CountdownCard value={days} label="Dias" index={0} />
             <CountdownCard value={hours} label="Horas" index={1} />
             <CountdownCard value={minutes} label="Minutos" index={2} />
@@ -71,16 +67,16 @@ export function Countdown() {
 
         {isExpired && (
           <motion.p
-            initial={{ opacity: 0, scale: 0.8 }}
+            initial={{ opacity: 0, scale: 0.9 }}
             animate={{ opacity: 1, scale: 1 }}
-            className="text-center font-script text-5xl text-accent-400 mt-4"
+            className="font-script text-5xl text-accent-400"
           >
-            É hoje! ✨
+            É hoje!
           </motion.p>
         )}
 
-        <ScrollReveal delay={0.3}>
-          <p className="text-center text-white/80 font-[Poppins] text-sm sm:text-base md:text-lg mt-8 sm:mt-10 tracking-wide font-light px-4 capitalize">
+        <ScrollReveal delay={0.25}>
+          <p className="text-white/75 font-[Poppins] text-sm sm:text-base mt-8 tracking-wide font-light capitalize">
             {new Date(EVENT_CONFIG.date).toLocaleDateString('pt-BR', {
               weekday: 'long',
               day: 'numeric',
