@@ -17,7 +17,7 @@ export function Input({ label, error, id, variant = 'light', className = '', ...
   const isDark = variant === 'dark'
 
   return (
-    <div className="w-full mb-2">
+    <div className="w-full text-left">
       <label
         htmlFor={inputId}
         className={`block text-xs sm:text-sm font-semibold uppercase tracking-wider mb-2.5 font-[Poppins] ${
@@ -29,7 +29,7 @@ export function Input({ label, error, id, variant = 'light', className = '', ...
       <input
         id={inputId}
         className={`
-          w-full px-5 py-4 rounded-2xl text-base font-[Poppins] min-h-[56px]
+          w-full px-4 sm:px-5 py-3.5 sm:py-4 rounded-2xl text-base font-[Poppins] min-h-[52px] sm:min-h-[56px]
           transition-all duration-300 shadow-md
           ${
             isDark
@@ -56,7 +56,7 @@ export function TextArea({ label, error, id, variant = 'light', className = '', 
   const isDark = variant === 'dark'
 
   return (
-    <div className="w-full mb-2">
+    <div className="w-full text-left">
       <label
         htmlFor={inputId}
         className={`block text-xs sm:text-sm font-semibold uppercase tracking-wider mb-2.5 font-[Poppins] ${
@@ -69,7 +69,7 @@ export function TextArea({ label, error, id, variant = 'light', className = '', 
         id={inputId}
         rows={3}
         className={`
-          w-full px-5 py-4 rounded-2xl text-base font-[Poppins] resize-none
+          w-full px-4 sm:px-5 py-3.5 sm:py-4 rounded-2xl text-base font-[Poppins] resize-none
           transition-all duration-300 shadow-md
           ${
             isDark

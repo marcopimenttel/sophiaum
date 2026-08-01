@@ -60,13 +60,13 @@ export function Hero() {
       </div>
 
       {/* Content */}
-      <div className="relative z-20 text-center section-container flex flex-col items-center">
+      <div className="relative z-20 text-center section-container flex flex-col items-center px-4 pt-8 pb-20">
         {/* Top spark */}
         <motion.div
           initial={{ opacity: 0, scale: 0 }}
           animate={{ opacity: 1, scale: 1 }}
           transition={{ duration: 1, delay: 0.2 }}
-          className="text-accent-400 mb-3"
+          className="text-accent-400 mb-4 sm:mb-5"
         >
           <Sparkles size={28} className="mx-auto" />
         </motion.div>
@@ -76,7 +76,7 @@ export function Hero() {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.4 }}
-          className="text-white/90 font-display italic text-lg sm:text-xl md:text-2xl tracking-wide mb-2"
+          className="text-white/90 font-display italic text-base sm:text-xl md:text-2xl tracking-wide mb-3 px-2"
         >
           Você está convidado(a) para celebrar os
         </motion.p>
@@ -86,12 +86,12 @@ export function Hero() {
           initial={{ opacity: 0, scale: 0.8 }}
           animate={{ opacity: 1, scale: 1 }}
           transition={{ duration: 0.8, delay: 0.6 }}
-          className="my-1 flex items-baseline justify-center gap-2"
+          className="my-2 flex items-baseline justify-center gap-2"
         >
-          <span className="text-shimmer font-display text-7xl sm:text-8xl md:text-9xl font-extrabold tracking-wider">
+          <span className="text-shimmer font-display text-6xl sm:text-8xl md:text-9xl font-extrabold tracking-wider">
             15
           </span>
-          <span className="text-shimmer font-display text-3xl sm:text-4xl md:text-5xl font-light italic">
+          <span className="text-shimmer font-display text-2xl sm:text-4xl md:text-5xl font-light italic">
             anos
           </span>
         </motion.div>
@@ -101,7 +101,7 @@ export function Hero() {
           initial={{ scaleX: 0 }}
           animate={{ scaleX: 1 }}
           transition={{ duration: 1, delay: 0.8 }}
-          className="mx-auto my-4 h-[1px] w-36 md:w-48 bg-gradient-to-r from-transparent via-accent-400 to-transparent"
+          className="mx-auto my-5 sm:my-6 h-[1px] w-32 md:w-48 bg-gradient-to-r from-transparent via-accent-400 to-transparent"
         />
 
         {/* Name */}
@@ -109,7 +109,7 @@ export function Hero() {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 1, delay: 1 }}
-          className="font-script text-5xl sm:text-6xl md:text-7xl lg:text-8xl text-white drop-shadow-2xl leading-tight"
+          className="font-script text-4xl sm:text-6xl md:text-7xl lg:text-8xl text-white drop-shadow-2xl leading-tight px-2"
         >
           {EVENT_CONFIG.name}
         </motion.h1>
@@ -119,7 +119,7 @@ export function Hero() {
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ duration: 0.8, delay: 1.4 }}
-          className="text-white/70 text-xs sm:text-sm font-[Poppins] font-light mt-4 tracking-wider uppercase"
+          className="text-white/70 text-xs sm:text-sm font-[Poppins] font-light mt-5 sm:mt-6 tracking-wider uppercase px-4"
         >
           Com os pais {EVENT_CONFIG.parents}
         </motion.p>
@@ -130,7 +130,7 @@ export function Hero() {
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ delay: 2 }}
-        className="absolute bottom-6 left-1/2 -translate-x-1/2 scroll-indicator z-20"
+        className="absolute bottom-8 left-1/2 -translate-x-1/2 scroll-indicator z-20"
       >
         <ChevronDown size={32} className="text-white/60" />
       </motion.div>

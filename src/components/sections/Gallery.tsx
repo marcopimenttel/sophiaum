@@ -31,13 +31,13 @@ export function Gallery() {
   }, [])
 
   return (
-    <section id="gallery" className="py-20 md:py-28 bg-white overflow-hidden">
+    <section id="gallery" className="page-section bg-white overflow-hidden">
       <div className="section-container section-container-wide">
         <SectionTitle subtitle="Momentos especiais inesquecíveis">
           Galeria de Fotos
         </SectionTitle>
 
-        <div className="mt-8">
+        <div className="mt-2 sm:mt-4">
           <Swiper
             effect="coverflow"
             grabCursor
@@ -54,24 +54,24 @@ export function Gallery() {
             }}
             pagination={{ clickable: true }}
             modules={[EffectCoverflow, Pagination, Autoplay]}
-            className="pb-14 pt-4"
+            className="!pb-12 sm:!pb-14 !pt-2"
           >
             {GALLERY_IMAGES.map((src, index) => (
               <SwiperSlide
                 key={src}
-                className="!w-[260px] sm:!w-[320px] md:!w-[380px]"
+                className="!w-[240px] sm:!w-[300px] md:!w-[360px]"
               >
                 <motion.div
                   whileHover={{ scale: 1.02 }}
                   whileTap={{ scale: 0.98 }}
-                  className="cursor-pointer relative group rounded-3xl overflow-hidden shadow-2xl shadow-neutral-900/15 border border-neutral-200/60 bg-neutral-100"
+                  className="cursor-pointer relative group rounded-2xl sm:rounded-3xl overflow-hidden shadow-2xl shadow-neutral-900/15 border border-neutral-200/60 bg-neutral-100"
                   onClick={() => openLightbox(index)}
                 >
                   <img
                     src={src}
                     alt={`Foto ${index + 1}`}
                     loading="lazy"
-                    className="w-full h-[360px] sm:h-[440px] md:h-[500px] object-cover transition-transform duration-500 group-hover:scale-105"
+                    className="w-full h-[320px] sm:h-[420px] md:h-[480px] object-cover transition-transform duration-500 group-hover:scale-105"
                   />
                   {/* Hover overlay indicator */}
                   <div className="absolute inset-0 bg-neutral-900/30 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">

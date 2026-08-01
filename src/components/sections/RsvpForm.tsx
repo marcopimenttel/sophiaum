@@ -57,7 +57,7 @@ export function RsvpForm() {
   }
 
   return (
-    <section id="rsvp" className="relative py-24 sm:py-32 md:py-40 overflow-hidden bg-neutral-950 text-white">
+    <section id="rsvp" className="relative page-section overflow-hidden bg-neutral-950 text-white">
       {/* Background image with blur */}
       <div className="absolute inset-0 pointer-events-none">
         <img
@@ -74,27 +74,27 @@ export function RsvpForm() {
           Confirmação de Presença
         </SectionTitle>
 
-        <div className="w-full max-w-3xl mx-auto p-8 sm:p-12 md:p-16 rounded-3xl glass-dark border border-white/20 shadow-2xl backdrop-blur-2xl">
+        <div className="w-full max-w-2xl mx-auto p-5 sm:p-8 md:p-12 rounded-2xl sm:rounded-3xl glass-dark border border-white/20 shadow-2xl backdrop-blur-2xl text-left">
           <AnimatePresence mode="wait">
             {submitted ? (
               <motion.div
                 key="success"
                 initial={{ opacity: 0, scale: 0.9 }}
                 animate={{ opacity: 1, scale: 1 }}
-                className="text-center py-10 space-y-6"
+                className="text-center py-8 sm:py-10 space-y-5 sm:space-y-6"
               >
                 <motion.div
                   animate={{ scale: [1, 1.15, 1] }}
                   transition={{ duration: 0.8, repeat: Infinity, repeatDelay: 1 }}
-                  className="w-24 h-24 mx-auto rounded-full bg-emerald-500/20 border border-emerald-500/40 flex items-center justify-center shadow-lg"
+                  className="w-20 h-20 sm:w-24 sm:h-24 mx-auto rounded-full bg-emerald-500/20 border border-emerald-500/40 flex items-center justify-center shadow-lg"
                 >
-                  <CheckCircle2 size={56} className="text-emerald-400" />
+                  <CheckCircle2 size={48} className="text-emerald-400" />
                 </motion.div>
-                <h3 className="font-script text-5xl sm:text-6xl text-white">Presença Confirmada!</h3>
-                <p className="text-neutral-300 font-[Poppins] text-base sm:text-lg max-w-md mx-auto leading-relaxed">
+                <h3 className="font-script text-4xl sm:text-5xl md:text-6xl text-white">Presença Confirmada!</h3>
+                <p className="text-neutral-300 font-[Poppins] text-sm sm:text-base md:text-lg max-w-md mx-auto leading-relaxed px-2">
                   Sua confirmação foi salva com sucesso. Estamos ansiosos para celebrar este momento especial com você!
                 </p>
-                <div className="pt-6">
+                <div className="pt-4 sm:pt-6">
                   <Button
                     variant="outline"
                     size="lg"
@@ -117,7 +117,7 @@ export function RsvpForm() {
                 animate={{ opacity: 1 }}
                 exit={{ opacity: 0 }}
                 onSubmit={handleSubmit}
-                className="space-y-6 sm:space-y-8"
+                className="space-y-5 sm:space-y-7"
               >
                 <ScrollReveal>
                   <Input
@@ -145,16 +145,16 @@ export function RsvpForm() {
                 </ScrollReveal>
 
                 <ScrollReveal delay={0.15}>
-                  <div className="p-6 rounded-2xl bg-neutral-900/90 border-2 border-neutral-700/80 flex items-center justify-between gap-4 shadow-md">
-                    <div className="flex items-center gap-4">
-                      <div className="w-12 h-12 rounded-2xl bg-primary-500/20 border border-primary-500/30 flex items-center justify-center shrink-0">
-                        <UserPlus size={24} className="text-primary-400" />
+                  <div className="p-4 sm:p-5 rounded-2xl bg-neutral-900/90 border-2 border-neutral-700/80 flex items-center justify-between gap-3 sm:gap-4 shadow-md">
+                    <div className="flex items-center gap-3 sm:gap-4 min-w-0">
+                      <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-2xl bg-primary-500/20 border border-primary-500/30 flex items-center justify-center shrink-0">
+                        <UserPlus size={22} className="text-primary-400" />
                       </div>
-                      <div>
-                        <p className="text-base sm:text-lg font-semibold text-white font-[Poppins]">
+                      <div className="min-w-0 text-left">
+                        <p className="text-sm sm:text-base font-semibold text-white font-[Poppins]">
                           Vai levar acompanhante?
                         </p>
-                        <p className="text-xs sm:text-sm text-neutral-400 font-[Poppins]">
+                        <p className="text-xs text-neutral-400 font-[Poppins]">
                           Ative se for acompanhado(a)
                         </p>
                       </div>
@@ -164,14 +164,15 @@ export function RsvpForm() {
                       type="button"
                       onClick={() => setTemAcompanhante(!temAcompanhante)}
                       className={`
-                        relative w-16 h-8 rounded-full transition-colors duration-300 cursor-pointer shrink-0 border-2
+                        relative w-14 h-7 sm:w-16 sm:h-8 rounded-full transition-colors duration-300 cursor-pointer shrink-0 border-2
                         ${temAcompanhante ? 'bg-primary-600 border-primary-400' : 'bg-neutral-800 border-neutral-600'}
                       `}
+                      aria-label="Alternar acompanhante"
                     >
                       <span
                         className={`
-                          absolute top-0.5 w-6 h-6 rounded-full bg-white transition-transform duration-300 shadow-md
-                          ${temAcompanhante ? 'translate-x-8' : 'translate-x-1'}
+                          absolute top-0.5 w-5 h-5 sm:w-6 sm:h-6 rounded-full bg-white transition-transform duration-300 shadow-md
+                          ${temAcompanhante ? 'translate-x-7 sm:translate-x-8' : 'translate-x-0.5 sm:translate-x-1'}
                         `}
                       />
                     </button>
@@ -185,27 +186,27 @@ export function RsvpForm() {
                       animate={{ height: 'auto', opacity: 1 }}
                       exit={{ height: 0, opacity: 0 }}
                       transition={{ duration: 0.3 }}
-                      className="overflow-hidden space-y-6 pt-2"
+                      className="overflow-hidden space-y-5 pt-1"
                     >
-                      <div className="p-6 rounded-2xl bg-neutral-900/90 border-2 border-neutral-700">
+                      <div className="p-4 sm:p-6 rounded-2xl bg-neutral-900/90 border-2 border-neutral-700 text-left">
                         <label className="block text-xs sm:text-sm font-semibold uppercase tracking-wider text-neutral-300 mb-4 font-[Poppins]">
                           Quantidade de Acompanhantes
                         </label>
-                        <div className="flex items-center gap-6">
+                        <div className="flex items-center justify-start gap-5 sm:gap-6">
                           <button
                             type="button"
                             onClick={() => setQtdAcompanhantes(Math.max(1, qtdAcompanhantes - 1))}
-                            className="w-14 h-14 rounded-2xl bg-neutral-800 hover:bg-neutral-700 text-white transition-colors text-2xl font-bold cursor-pointer flex items-center justify-center border border-neutral-600 shadow-sm"
+                            className="w-12 h-12 sm:w-14 sm:h-14 rounded-2xl bg-neutral-800 hover:bg-neutral-700 text-white transition-colors text-2xl font-bold cursor-pointer flex items-center justify-center border border-neutral-600 shadow-sm"
                           >
                             −
                           </button>
-                          <span className="text-white font-[Poppins] font-bold text-3xl w-14 text-center">
+                          <span className="text-white font-[Poppins] font-bold text-2xl sm:text-3xl w-10 sm:w-14 text-center">
                             {qtdAcompanhantes}
                           </span>
                           <button
                             type="button"
                             onClick={() => setQtdAcompanhantes(Math.min(10, qtdAcompanhantes + 1))}
-                            className="w-14 h-14 rounded-2xl bg-neutral-800 hover:bg-neutral-700 text-white transition-colors text-2xl font-bold cursor-pointer flex items-center justify-center border border-neutral-600 shadow-sm"
+                            className="w-12 h-12 sm:w-14 sm:h-14 rounded-2xl bg-neutral-800 hover:bg-neutral-700 text-white transition-colors text-2xl font-bold cursor-pointer flex items-center justify-center border border-neutral-600 shadow-sm"
                           >
                             +
                           </button>
@@ -229,8 +230,8 @@ export function RsvpForm() {
                     variant="primary"
                     size="lg"
                     loading={loading}
-                    icon={<Send size={22} />}
-                    className="w-full mt-6 py-5 text-lg font-bold min-h-[60px]"
+                    icon={<Send size={20} />}
+                    className="w-full mt-2 sm:mt-4 py-4 sm:py-5 text-base sm:text-lg font-bold min-h-[56px]"
                   >
                     Confirmar Presença
                   </Button>

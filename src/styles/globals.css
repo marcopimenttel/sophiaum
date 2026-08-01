@@ -173,25 +173,58 @@ body {
 
 .section-container {
   width: 100%;
-  max-width: 1200px;
+  max-width: 1120px;
   margin-left: auto;
   margin-right: auto;
-  padding-left: 1.5rem;
-  padding-right: 1.5rem;
+  padding-left: 1.25rem;
+  padding-right: 1.25rem;
+}
+
+.section-container-wide {
+  max-width: 1280px;
 }
 
 @media (min-width: 640px) {
+  .section-container {
+    padding-left: 2rem;
+    padding-right: 2rem;
+  }
+}
+
+@media (min-width: 1024px) {
   .section-container {
     padding-left: 2.5rem;
     padding-right: 2.5rem;
   }
 }
 
-@media (min-width: 1024px) {
-  .section-container {
-    padding-left: 3rem;
-    padding-right: 3rem;
+/* Vertical rhythm for page sections */
+.page-section {
+  padding-top: 4.5rem;
+  padding-bottom: 4.5rem;
+}
+
+@media (min-width: 640px) {
+  .page-section {
+    padding-top: 5.5rem;
+    padding-bottom: 5.5rem;
   }
+}
+
+@media (min-width: 768px) {
+  .page-section {
+    padding-top: 6.5rem;
+    padding-bottom: 6.5rem;
+  }
+}
+
+.overlay-gradient-red {
+  background: linear-gradient(
+    to bottom,
+    rgba(28, 25, 23, 0.35) 0%,
+    rgba(28, 25, 23, 0.55) 45%,
+    rgba(28, 25, 23, 0.88) 100%
+  );
 }
 
 /* ═══════════════════════════════════════════════════════════
@@ -224,11 +257,18 @@ body {
    SWIPER OVERRIDES
    ═══════════════════════════════════════════════════════════ */
 
+.swiper-pagination {
+  bottom: 0 !important;
+  margin-top: 1.5rem;
+  position: relative !important;
+}
+
 .swiper-pagination-bullet {
   background: var(--color-accent-400) !important;
   opacity: 0.4 !important;
   width: 10px !important;
   height: 10px !important;
+  margin: 0 5px !important;
 }
 
 .swiper-pagination-bullet-active {

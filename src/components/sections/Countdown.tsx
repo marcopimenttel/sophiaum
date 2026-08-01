@@ -16,18 +16,18 @@ function CountdownCard({ value, label, index }: CountdownCardProps) {
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true }}
       transition={{ duration: 0.5, delay: index * 0.1 }}
-      className="glass rounded-3xl p-5 sm:p-7 md:p-8 text-center flex-1 max-w-[160px] border border-white/25 shadow-2xl backdrop-blur-2xl"
+      className="glass rounded-2xl sm:rounded-3xl px-3 py-5 sm:p-6 md:p-8 text-center flex-1 min-w-[72px] max-w-[140px] sm:max-w-[160px] border border-white/25 shadow-2xl backdrop-blur-2xl"
     >
       <motion.span
         key={value}
         initial={{ scale: 1.25, opacity: 0 }}
         animate={{ scale: 1, opacity: 1 }}
         transition={{ type: 'spring', stiffness: 300, damping: 20 }}
-        className="block font-display text-4xl sm:text-5xl md:text-6xl font-bold text-white tracking-tight"
+        className="block font-display text-3xl sm:text-5xl md:text-6xl font-bold text-white tracking-tight"
       >
         {String(value).padStart(2, '0')}
       </motion.span>
-      <span className="block mt-2 text-xs sm:text-sm text-accent-300 font-[Poppins] font-bold uppercase tracking-widest">
+      <span className="block mt-2 sm:mt-3 text-[10px] sm:text-xs md:text-sm text-accent-300 font-[Poppins] font-bold uppercase tracking-widest">
         {label}
       </span>
     </motion.div>
@@ -40,7 +40,7 @@ export function Countdown() {
   return (
     <section
       id="countdown"
-      className="relative py-24 md:py-36 overflow-hidden bg-neutral-950"
+      className="relative page-section overflow-hidden bg-neutral-950"
     >
       {/* Background image */}
       <div className="absolute inset-0 pointer-events-none">
@@ -53,15 +53,15 @@ export function Countdown() {
         <div className="absolute inset-0 bg-neutral-950/80" />
       </div>
 
-      <div className="section-container relative z-10">
+      <div className="section-container relative z-10 flex flex-col items-center text-center">
         <ScrollReveal>
-          <p className="text-center text-accent-400 font-[Poppins] font-bold text-sm sm:text-base uppercase tracking-[0.35em] mb-8">
+          <p className="text-center text-accent-400 font-[Poppins] font-bold text-xs sm:text-sm md:text-base uppercase tracking-[0.3em] sm:tracking-[0.35em] mb-8 sm:mb-10">
             {isExpired ? 'O grande dia chegou!' : 'Contagem Regressiva'}
           </p>
         </ScrollReveal>
 
         {!isExpired && (
-          <div className="flex justify-center items-center gap-3 sm:gap-6 md:gap-8 max-w-2xl mx-auto">
+          <div className="flex justify-center items-stretch gap-2.5 sm:gap-5 md:gap-6 w-full max-w-2xl mx-auto px-1">
             <CountdownCard value={days} label="Dias" index={0} />
             <CountdownCard value={hours} label="Horas" index={1} />
             <CountdownCard value={minutes} label="Minutos" index={2} />
@@ -80,7 +80,7 @@ export function Countdown() {
         )}
 
         <ScrollReveal delay={0.3}>
-          <p className="text-center text-white/80 font-[Poppins] text-base sm:text-lg mt-10 tracking-wide font-light">
+          <p className="text-center text-white/80 font-[Poppins] text-sm sm:text-base md:text-lg mt-8 sm:mt-10 tracking-wide font-light px-4 capitalize">
             {new Date(EVENT_CONFIG.date).toLocaleDateString('pt-BR', {
               weekday: 'long',
               day: 'numeric',
