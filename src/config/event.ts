@@ -15,8 +15,11 @@ export const EVENT_CONFIG = {
   /** Nomes dos pais */
   parents: 'Márcia Keyla Gomes e Fábio Freitas',
 
-  /** Data e hora do evento — ISO 8601 */
+  /** Data e hora do evento — ISO 8601 (para contagem regressiva) */
   date: '2026-08-21T21:00:00-03:00',
+
+  /** Horário exibido nos detalhes (fixo, sem conversão de fuso) */
+  timeLabel: '21:00',
 
   /** Nome do local */
   venue: 'Imperial Eventos',
