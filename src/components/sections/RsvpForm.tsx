@@ -76,14 +76,14 @@ export function RsvpForm() {
           Confirmação de Presença
         </SectionTitle>
 
-        <div className="w-full max-w-xl mx-auto px-6 py-8 sm:px-10 sm:py-11 md:px-12 md:py-12 rounded-2xl sm:rounded-3xl glass-dark border border-white/15">
+        <div className="w-full max-w-md sm:max-w-lg mx-auto">
           <AnimatePresence mode="wait">
             {submitted ? (
               <motion.div
                 key="success"
                 initial={{ opacity: 0, scale: 0.95 }}
                 animate={{ opacity: 1, scale: 1 }}
-                className="text-center py-4 sm:py-6 space-y-5"
+                className="text-center py-6 space-y-5"
               >
                 <div className="w-16 h-16 mx-auto rounded-full bg-emerald-500/20 border border-emerald-500/30 flex items-center justify-center">
                   <CheckCircle2 size={36} className="text-emerald-400" />
@@ -138,7 +138,7 @@ export function RsvpForm() {
                   required
                 />
 
-                <div className="px-4 py-5 sm:px-5 sm:py-5 rounded-2xl bg-neutral-900/80 border border-neutral-700 flex items-center justify-between gap-4">
+                <div className="flex items-center justify-between gap-4 py-1">
                   <div className="flex items-center gap-3.5 min-w-0">
                     <div className="w-11 h-11 rounded-xl bg-primary-500/15 border border-primary-500/25 flex items-center justify-center shrink-0">
                       <UserPlus size={20} className="text-primary-400" />
@@ -181,7 +181,7 @@ export function RsvpForm() {
                       transition={{ duration: 0.25 }}
                       className="overflow-hidden flex flex-col gap-7 sm:gap-8"
                     >
-                      <div className="px-4 py-5 sm:px-5 rounded-2xl bg-neutral-900/80 border border-neutral-700 text-left">
+                      <div className="text-left">
                         <label className="block text-xs font-semibold uppercase tracking-[0.12em] text-neutral-300 mb-4 font-[Poppins]">
                           Quantidade de Acompanhantes
                         </label>
