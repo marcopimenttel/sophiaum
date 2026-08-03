@@ -2,6 +2,7 @@ import { useState, type FormEvent } from 'react'
 import { motion } from 'framer-motion'
 import { LogIn, Lock } from 'lucide-react'
 import { useAuth } from '../../hooks/useAuth'
+import { isSupabaseConfigured } from '../../lib/supabase'
 import { Input } from '../ui/Input'
 import { Button } from '../ui/Button'
 import { Toast } from '../ui/Toast'
@@ -16,6 +17,14 @@ export function LoginForm() {
   async function handleSubmit(e: FormEvent) {
     e.preventDefault()
     setError('')
+
+    if (!isSupabaseConfigured) {
+      setError(
+        'Supabase não configurado na Vercel. Adicione VITE_SUPABASE_URL e VITE_SUPABASE_ANON_KEY e faça Redeploy.',
+      )
+      setShowToast(true)
+      return
+    }
 
     try {
       await signIn(email, password)
