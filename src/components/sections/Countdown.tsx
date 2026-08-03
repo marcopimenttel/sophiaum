@@ -16,7 +16,7 @@ function CountdownCard({ value, label, index }: CountdownCardProps) {
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true }}
       transition={{ duration: 0.45, delay: index * 0.08 }}
-      className="glass rounded-2xl px-2 py-4 sm:px-4 sm:py-6 text-center border border-white/20"
+      className="glass rounded-2xl px-2 py-5 sm:px-4 sm:py-7 text-center border border-white/20"
     >
       <motion.span
         key={value}
@@ -27,7 +27,7 @@ function CountdownCard({ value, label, index }: CountdownCardProps) {
       >
         {String(value).padStart(2, '0')}
       </motion.span>
-      <span className="block mt-2 text-[10px] sm:text-xs text-accent-300 font-[Poppins] font-semibold uppercase tracking-[0.14em]">
+      <span className="block mt-3 sm:mt-3.5 text-[10px] sm:text-xs text-accent-300 font-[Poppins] font-semibold uppercase tracking-[0.14em]">
         {label}
       </span>
     </motion.div>
@@ -49,15 +49,15 @@ export function Countdown() {
         <div className="absolute inset-0 bg-neutral-950/80" />
       </div>
 
-      <div className="section-container relative z-10 flex flex-col items-center text-center">
+      <div className="section-container relative z-10 flex flex-col items-center text-center gap-10 sm:gap-12">
         <ScrollReveal>
-          <p className="text-accent-400 font-[Poppins] font-semibold text-xs sm:text-sm uppercase tracking-[0.28em] mb-8">
+          <p className="text-accent-400 font-[Poppins] font-semibold text-xs sm:text-sm uppercase tracking-[0.28em]">
             {isExpired ? 'O grande dia chegou!' : 'Contagem Regressiva'}
           </p>
         </ScrollReveal>
 
         {!isExpired && (
-          <div className="grid grid-cols-4 gap-2 sm:gap-4 w-full max-w-xl mx-auto">
+          <div className="grid grid-cols-4 gap-2.5 sm:gap-4 w-full max-w-xl mx-auto">
             <CountdownCard value={days} label="Dias" index={0} />
             <CountdownCard value={hours} label="Horas" index={1} />
             <CountdownCard value={minutes} label="Minutos" index={2} />
@@ -76,7 +76,7 @@ export function Countdown() {
         )}
 
         <ScrollReveal delay={0.25}>
-          <p className="text-white/75 font-[Poppins] text-sm sm:text-base mt-8 tracking-wide font-light capitalize">
+          <p className="text-white/75 font-[Poppins] text-sm sm:text-base tracking-wide font-light capitalize">
             {new Date(EVENT_CONFIG.date).toLocaleDateString('pt-BR', {
               weekday: 'long',
               day: 'numeric',
