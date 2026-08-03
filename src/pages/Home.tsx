@@ -6,6 +6,7 @@ import { DressCode } from '../components/sections/DressCode'
 import { GiftSuggestions } from '../components/sections/GiftSuggestions'
 import { RsvpForm } from '../components/sections/RsvpForm'
 import { Footer } from '../components/sections/Footer'
+import { MusicPlayer } from '../components/ui/MusicPlayer'
 
 export function Home() {
   return (
@@ -18,6 +19,7 @@ export function Home() {
       <GiftSuggestions />
       <RsvpForm />
       <Footer />
+      <MusicPlayer />
     </main>
   )
 }

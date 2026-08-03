@@ -41,6 +41,10 @@ export const EVENT_CONFIG = {
 
   /** URL base do site */
   siteUrl: 'https://sophia.webmachri.com',
+
+  /** Música de fundo do convite */
+  musicSrc: '/audio/vienna.mp3',
+  musicVolume: 0.45,
 } as const
 
 /**
