@@ -1,8 +1,8 @@
 import { useState, type FormEvent } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
-import { UserPlus, CheckCircle2, Send } from 'lucide-react'
+import { CheckCircle2, Send } from 'lucide-react'
 import { SectionTitle } from '../ui/SectionTitle'
-import { Input, TextArea } from '../ui/Input'
+import { Input } from '../ui/Input'
 import { Button } from '../ui/Button'
 import { Toast } from '../ui/Toast'
 import { useRsvps } from '../../hooks/useRsvps'
@@ -14,9 +14,6 @@ export function RsvpForm() {
 
   const [nome, setNome] = useState('')
   const [whatsapp, setWhatsapp] = useState('')
-  const [temAcompanhante, setTemAcompanhante] = useState(false)
-  const [qtdAcompanhantes, setQtdAcompanhantes] = useState(1)
-  const [nomesAcompanhantes, setNomesAcompanhantes] = useState('')
 
   const [errors, setErrors] = useState<Record<string, string>>({})
   const [toast, setToast] = useState<{ message: string; type: 'success' | 'error'; visible: boolean }>({
@@ -42,9 +39,8 @@ export function RsvpForm() {
     const success = await submitRsvp({
       nome: nome.trim(),
       whatsapp: whatsapp.trim(),
-      tem_acompanhante: temAcompanhante,
-      quantidade_acompanhantes: temAcompanhante ? qtdAcompanhantes : 0,
-      nomes_acompanhantes: temAcompanhante ? nomesAcompanhantes.trim() : undefined,
+      tem_acompanhante: false,
+      quantidade_acompanhantes: 0,
     })
 
     if (success) {
@@ -100,7 +96,6 @@ export function RsvpForm() {
                       setSubmitted(false)
                       setNome('')
                       setWhatsapp('')
-                      setTemAcompanhante(false)
                     }}
                     className="text-white border-white/30 bg-transparent hover:bg-white/10"
                   >
@@ -137,85 +132,6 @@ export function RsvpForm() {
                   variant="dark"
                   required
                 />
-
-                <div className="flex items-center justify-between gap-4 py-1">
-                  <div className="flex items-center gap-3.5 min-w-0">
-                    <div className="w-11 h-11 rounded-xl bg-primary-500/15 border border-primary-500/25 flex items-center justify-center shrink-0">
-                      <UserPlus size={20} className="text-primary-400" />
-                    </div>
-                    <div className="min-w-0 text-left">
-                      <p className="text-sm sm:text-[15px] font-semibold text-white font-[Poppins] leading-snug">
-                        Vai levar acompanhante?
-                      </p>
-                      <p className="text-xs text-neutral-400 font-[Poppins] mt-1">
-                        Ative se for acompanhado(a)
-                      </p>
-                    </div>
-                  </div>
-
-                  <button
-                    type="button"
-                    onClick={() => setTemAcompanhante(!temAcompanhante)}
-                    className={`
-                      relative w-12 h-7 rounded-full transition-colors duration-300 cursor-pointer shrink-0
-                      ${temAcompanhante ? 'bg-primary-600' : 'bg-neutral-700'}
-                    `}
-                    aria-label="Alternar acompanhante"
-                    aria-pressed={temAcompanhante}
-                  >
-                    <span
-                      className={`
-                        absolute top-0.5 left-0.5 w-6 h-6 rounded-full bg-white transition-transform duration-300 shadow
-                        ${temAcompanhante ? 'translate-x-5' : 'translate-x-0'}
-                      `}
-                    />
-                  </button>
-                </div>
-
-                <AnimatePresence>
-                  {temAcompanhante && (
-                    <motion.div
-                      initial={{ height: 0, opacity: 0 }}
-                      animate={{ height: 'auto', opacity: 1 }}
-                      exit={{ height: 0, opacity: 0 }}
-                      transition={{ duration: 0.25 }}
-                      className="overflow-hidden flex flex-col gap-7 sm:gap-8"
-                    >
-                      <div className="text-left">
-                        <label className="block text-xs font-semibold uppercase tracking-[0.12em] text-neutral-300 mb-4 font-[Poppins]">
-                          Quantidade de Acompanhantes
-                        </label>
-                        <div className="flex items-center gap-5">
-                          <button
-                            type="button"
-                            onClick={() => setQtdAcompanhantes(Math.max(1, qtdAcompanhantes - 1))}
-                            className="w-11 h-11 rounded-xl bg-neutral-800 hover:bg-neutral-700 text-white transition-colors text-xl font-bold cursor-pointer flex items-center justify-center border border-neutral-600"
-                          >
-                            −
-                          </button>
-                          <span className="text-white font-[Poppins] font-bold text-2xl w-8 text-center tabular-nums">
-                            {qtdAcompanhantes}
-                          </span>
-                          <button
-                            type="button"
-                            onClick={() => setQtdAcompanhantes(Math.min(10, qtdAcompanhantes + 1))}
-                            className="w-11 h-11 rounded-xl bg-neutral-800 hover:bg-neutral-700 text-white transition-colors text-xl font-bold cursor-pointer flex items-center justify-center border border-neutral-600"
-                          >
-                            +
-                          </button>
-                        </div>
-                      </div>
-
-                      <TextArea
-                        label="Nomes dos acompanhantes (opcional)"
-                        placeholder="Ex: João Silva e Maria Santos"
-                        value={nomesAcompanhantes}
-                        onChange={(e) => setNomesAcompanhantes(e.target.value)}
-                        variant="dark"
-                      />
-                    </motion.div>
-                  )}
-                </AnimatePresence>
 
                 <div className="pt-2 sm:pt-3">
                   <Button
