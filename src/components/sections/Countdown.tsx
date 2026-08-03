@@ -82,6 +82,7 @@ export function Countdown() {
               day: 'numeric',
               month: 'long',
               year: 'numeric',
+              timeZone: 'America/Manaus',
             })}
           </p>
         </ScrollReveal>
