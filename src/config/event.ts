@@ -42,32 +42,32 @@ export const EVENT_CONFIG = {
 
 /**
  * Fotos do hero (fundo da seção principal)
+ * Fonte: Documents/fotosophia/Seleção
  */
 export const HERO_IMAGES = [
-  '/images/hero/hero-1.webp',
-  '/images/hero/hero-2.webp',
-  '/images/hero/hero-3.webp',
+  '/images/hero/hero-1.jpg',
+  '/images/hero/hero-2.jpg',
+  '/images/hero/hero-3.jpg',
 ]
 
 /**
  * Fotos da galeria
+ * Fonte: Documents/fotosophia/Seleção (todas as fotos)
  */
 export const GALLERY_IMAGES = [
-  '/images/gallery/gallery-2.webp',
-  '/images/gallery/gallery-3.webp',
-  '/images/gallery/gallery-4.webp',
-  '/images/gallery/gallery-5.webp',
-  '/images/gallery/gallery-7.webp',
-  '/images/gallery/gallery-9.webp',
-  '/images/gallery/gallery-11.webp',
-  '/images/gallery/gallery-14.webp',
-  '/images/gallery/gallery-15.webp',
-  '/images/gallery/gallery-17.webp',
-  '/images/gallery/gallery-24.webp',
-  '/images/gallery/gallery-25.webp',
-  '/images/gallery/gallery-28.webp',
-  '/images/gallery/gallery-33.webp',
-  '/images/gallery/gallery-35.webp',
+  '/images/gallery/photo-01.jpg',
+  '/images/gallery/photo-02.jpg',
+  '/images/gallery/photo-03.jpg',
+  '/images/gallery/photo-04.jpg',
+  '/images/gallery/photo-05.jpg',
+  '/images/gallery/photo-06.jpg',
+  '/images/gallery/photo-07.jpg',
+  '/images/gallery/photo-08.jpg',
+  '/images/gallery/photo-09.jpg',
+  '/images/gallery/photo-10.jpg',
+  '/images/gallery/photo-11.jpg',
+  '/images/gallery/photo-12.jpg',
+  '/images/gallery/photo-13.jpg',
 ]
 
 /**
