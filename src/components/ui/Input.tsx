@@ -23,7 +23,7 @@ export function Input({ label, error, id, variant = 'light', className = '', ...
     <div className="w-full text-left">
       <label
         htmlFor={inputId}
-        className={`block text-xs font-semibold uppercase tracking-[0.12em] mb-2 font-[Poppins] ${
+        className={`block text-xs font-semibold uppercase tracking-[0.12em] mb-3 font-[Poppins] ${
           isDark ? 'text-neutral-300' : 'text-neutral-600'
         }`}
       >
@@ -33,7 +33,7 @@ export function Input({ label, error, id, variant = 'light', className = '', ...
         id={inputId}
         className={`
           ${fieldBase}
-          px-4 py-3.5 min-h-[48px] sm:min-h-[52px]
+          px-4 sm:px-5 py-4 min-h-[52px] sm:min-h-[56px]
           ${
             isDark
               ? 'bg-neutral-900 border border-neutral-700 text-white placeholder:text-neutral-500 focus:border-primary-400 focus:ring-2 focus:ring-primary-500/25'
@@ -45,7 +45,7 @@ export function Input({ label, error, id, variant = 'light', className = '', ...
         {...props}
       />
       {error && (
-        <p className={`mt-1.5 text-xs font-[Poppins] font-medium ${isDark ? 'text-red-300' : 'text-red-600'}`}>
+        <p className={`mt-2 text-xs font-[Poppins] font-medium ${isDark ? 'text-red-300' : 'text-red-600'}`}>
           {error}
         </p>
       )}
@@ -61,7 +61,7 @@ export function TextArea({ label, error, id, variant = 'light', className = '', 
     <div className="w-full text-left">
       <label
         htmlFor={inputId}
-        className={`block text-xs font-semibold uppercase tracking-[0.12em] mb-2 font-[Poppins] ${
+        className={`block text-xs font-semibold uppercase tracking-[0.12em] mb-3 font-[Poppins] ${
           isDark ? 'text-neutral-300' : 'text-neutral-600'
         }`}
       >
@@ -72,7 +72,7 @@ export function TextArea({ label, error, id, variant = 'light', className = '', 
         rows={3}
         className={`
           ${fieldBase}
-          px-4 py-3.5 resize-none
+          px-4 sm:px-5 py-4 resize-none
           ${
             isDark
               ? 'bg-neutral-900 border border-neutral-700 text-white placeholder:text-neutral-500 focus:border-primary-400 focus:ring-2 focus:ring-primary-500/25'
@@ -84,7 +84,7 @@ export function TextArea({ label, error, id, variant = 'light', className = '', 
         {...props}
       />
       {error && (
-        <p className={`mt-1.5 text-xs font-[Poppins] font-medium ${isDark ? 'text-red-300' : 'text-red-600'}`}>
+        <p className={`mt-2 text-xs font-[Poppins] font-medium ${isDark ? 'text-red-300' : 'text-red-600'}`}>
           {error}
         </p>
       )}

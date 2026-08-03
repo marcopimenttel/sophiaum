@@ -2,7 +2,6 @@ import { useState, type FormEvent } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { UserPlus, CheckCircle2, Send } from 'lucide-react'
 import { SectionTitle } from '../ui/SectionTitle'
-import { ScrollReveal } from '../ui/ScrollReveal'
 import { Input, TextArea } from '../ui/Input'
 import { Button } from '../ui/Button'
 import { Toast } from '../ui/Toast'
@@ -68,28 +67,32 @@ export function RsvpForm() {
         <div className="absolute inset-0 bg-gradient-to-b from-neutral-950 via-neutral-950/90 to-neutral-950" />
       </div>
 
-      <div className="section-container relative z-10">
-        <SectionTitle light subtitle="Por favor, confirme sua presença com antecedência">
+      <div className="section-container relative z-10 flex flex-col items-center">
+        <SectionTitle
+          light
+          subtitle="Por favor, confirme sua presença com antecedência"
+          className="mb-10 sm:mb-12"
+        >
           Confirmação de Presença
         </SectionTitle>
 
-        <div className="w-full max-w-lg mx-auto p-5 sm:p-8 rounded-2xl glass-dark border border-white/15 text-left">
+        <div className="w-full max-w-xl mx-auto px-6 py-8 sm:px-10 sm:py-11 md:px-12 md:py-12 rounded-2xl sm:rounded-3xl glass-dark border border-white/15">
           <AnimatePresence mode="wait">
             {submitted ? (
               <motion.div
                 key="success"
                 initial={{ opacity: 0, scale: 0.95 }}
                 animate={{ opacity: 1, scale: 1 }}
-                className="text-center py-6 space-y-4"
+                className="text-center py-4 sm:py-6 space-y-5"
               >
                 <div className="w-16 h-16 mx-auto rounded-full bg-emerald-500/20 border border-emerald-500/30 flex items-center justify-center">
                   <CheckCircle2 size={36} className="text-emerald-400" />
                 </div>
                 <h3 className="font-script text-4xl sm:text-5xl text-white">Presença Confirmada!</h3>
-                <p className="text-neutral-300 font-[Poppins] text-sm sm:text-base leading-relaxed">
+                <p className="text-neutral-300 font-[Poppins] text-sm sm:text-base leading-relaxed max-w-sm mx-auto">
                   Sua confirmação foi salva com sucesso. Estamos ansiosos para celebrar este momento especial com você!
                 </p>
-                <div className="pt-3">
+                <div className="pt-4">
                   <Button
                     variant="outline"
                     size="md"
@@ -112,68 +115,62 @@ export function RsvpForm() {
                 animate={{ opacity: 1 }}
                 exit={{ opacity: 0 }}
                 onSubmit={handleSubmit}
-                className="space-y-5"
+                className="flex flex-col gap-7 sm:gap-8"
               >
-                <ScrollReveal>
-                  <Input
-                    label="Seu Nome Completo"
-                    placeholder="Digite seu nome e sobrenome"
-                    value={nome}
-                    onChange={(e) => setNome(e.target.value)}
-                    error={errors.nome}
-                    variant="dark"
-                    required
-                  />
-                </ScrollReveal>
+                <Input
+                  label="Seu Nome Completo"
+                  placeholder="Digite seu nome e sobrenome"
+                  value={nome}
+                  onChange={(e) => setNome(e.target.value)}
+                  error={errors.nome}
+                  variant="dark"
+                  required
+                />
 
-                <ScrollReveal delay={0.05}>
-                  <Input
-                    label="Seu WhatsApp para Contato"
-                    placeholder="(XX) XXXXX-XXXX"
-                    value={whatsapp}
-                    onChange={(e) => setWhatsapp(maskPhone(e.target.value))}
-                    error={errors.whatsapp}
-                    type="tel"
-                    variant="dark"
-                    required
-                  />
-                </ScrollReveal>
+                <Input
+                  label="Seu WhatsApp para Contato"
+                  placeholder="(XX) XXXXX-XXXX"
+                  value={whatsapp}
+                  onChange={(e) => setWhatsapp(maskPhone(e.target.value))}
+                  error={errors.whatsapp}
+                  type="tel"
+                  variant="dark"
+                  required
+                />
 
-                <ScrollReveal delay={0.1}>
-                  <div className="p-4 rounded-xl bg-neutral-900 border border-neutral-700 flex items-center justify-between gap-3">
-                    <div className="flex items-center gap-3 min-w-0">
-                      <div className="w-10 h-10 rounded-xl bg-primary-500/15 border border-primary-500/25 flex items-center justify-center shrink-0">
-                        <UserPlus size={18} className="text-primary-400" />
-                      </div>
-                      <div className="min-w-0 text-left">
-                        <p className="text-sm font-semibold text-white font-[Poppins]">
-                          Vai levar acompanhante?
-                        </p>
-                        <p className="text-xs text-neutral-400 font-[Poppins]">
-                          Ative se for acompanhado(a)
-                        </p>
-                      </div>
+                <div className="px-4 py-5 sm:px-5 sm:py-5 rounded-2xl bg-neutral-900/80 border border-neutral-700 flex items-center justify-between gap-4">
+                  <div className="flex items-center gap-3.5 min-w-0">
+                    <div className="w-11 h-11 rounded-xl bg-primary-500/15 border border-primary-500/25 flex items-center justify-center shrink-0">
+                      <UserPlus size={20} className="text-primary-400" />
                     </div>
-
-                    <button
-                      type="button"
-                      onClick={() => setTemAcompanhante(!temAcompanhante)}
-                      className={`
-                        relative w-12 h-7 rounded-full transition-colors duration-300 cursor-pointer shrink-0
-                        ${temAcompanhante ? 'bg-primary-600' : 'bg-neutral-700'}
-                      `}
-                      aria-label="Alternar acompanhante"
-                      aria-pressed={temAcompanhante}
-                    >
-                      <span
-                        className={`
-                          absolute top-0.5 left-0.5 w-6 h-6 rounded-full bg-white transition-transform duration-300 shadow
-                          ${temAcompanhante ? 'translate-x-5' : 'translate-x-0'}
-                        `}
-                      />
-                    </button>
+                    <div className="min-w-0 text-left">
+                      <p className="text-sm sm:text-[15px] font-semibold text-white font-[Poppins] leading-snug">
+                        Vai levar acompanhante?
+                      </p>
+                      <p className="text-xs text-neutral-400 font-[Poppins] mt-1">
+                        Ative se for acompanhado(a)
+                      </p>
+                    </div>
                   </div>
-                </ScrollReveal>
+
+                  <button
+                    type="button"
+                    onClick={() => setTemAcompanhante(!temAcompanhante)}
+                    className={`
+                      relative w-12 h-7 rounded-full transition-colors duration-300 cursor-pointer shrink-0
+                      ${temAcompanhante ? 'bg-primary-600' : 'bg-neutral-700'}
+                    `}
+                    aria-label="Alternar acompanhante"
+                    aria-pressed={temAcompanhante}
+                  >
+                    <span
+                      className={`
+                        absolute top-0.5 left-0.5 w-6 h-6 rounded-full bg-white transition-transform duration-300 shadow
+                        ${temAcompanhante ? 'translate-x-5' : 'translate-x-0'}
+                      `}
+                    />
+                  </button>
+                </div>
 
                 <AnimatePresence>
                   {temAcompanhante && (
@@ -182,13 +179,13 @@ export function RsvpForm() {
                       animate={{ height: 'auto', opacity: 1 }}
                       exit={{ height: 0, opacity: 0 }}
                       transition={{ duration: 0.25 }}
-                      className="overflow-hidden space-y-5"
+                      className="overflow-hidden flex flex-col gap-7 sm:gap-8"
                     >
-                      <div className="p-4 rounded-xl bg-neutral-900 border border-neutral-700 text-left">
-                        <label className="block text-xs font-semibold uppercase tracking-[0.12em] text-neutral-300 mb-3 font-[Poppins]">
+                      <div className="px-4 py-5 sm:px-5 rounded-2xl bg-neutral-900/80 border border-neutral-700 text-left">
+                        <label className="block text-xs font-semibold uppercase tracking-[0.12em] text-neutral-300 mb-4 font-[Poppins]">
                           Quantidade de Acompanhantes
                         </label>
-                        <div className="flex items-center gap-4">
+                        <div className="flex items-center gap-5">
                           <button
                             type="button"
                             onClick={() => setQtdAcompanhantes(Math.max(1, qtdAcompanhantes - 1))}
@@ -220,18 +217,18 @@ export function RsvpForm() {
                   )}
                 </AnimatePresence>
 
-                <ScrollReveal delay={0.15}>
+                <div className="pt-2 sm:pt-3">
                   <Button
                     type="submit"
                     variant="primary"
                     size="lg"
                     loading={loading}
                     icon={<Send size={18} />}
-                    className="w-full"
+                    className="w-full min-h-[54px]"
                   >
                     Confirmar Presença
                   </Button>
-                </ScrollReveal>
+                </div>
               </motion.form>
             )}
           </AnimatePresence>
