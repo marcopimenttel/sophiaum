@@ -35,29 +35,32 @@ export function EventDetails() {
 
   return (
     <section id="event-details" className="page-section bg-neutral-50 border-y border-neutral-100">
-      <div className="section-container">
-        <SectionTitle subtitle="Anote em sua agenda para não esquecer">
+      <div className="section-container flex flex-col items-center">
+        <SectionTitle
+          subtitle="Anote em sua agenda para não esquecer"
+          className="mb-10 sm:mb-12"
+        >
           Detalhes do Evento
         </SectionTitle>
 
-        <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 w-full">
+        <div className="grid grid-cols-1 sm:grid-cols-3 gap-5 sm:gap-6 w-full max-w-4xl">
           {cards.map((card, index) => {
             const Icon = card.icon
             return (
               <ScrollReveal key={card.label} delay={index * 0.08} className="h-full">
-                <div className="surface-card h-full p-6 sm:p-7 flex flex-col items-center text-center justify-center gap-3 min-h-[180px] sm:min-h-[200px]">
+                <div className="surface-card h-full px-6 py-8 sm:px-7 sm:py-9 flex flex-col items-center text-center justify-center gap-4 min-h-[190px]">
                   <div className="w-12 h-12 rounded-xl bg-primary-50 border border-primary-100 flex items-center justify-center">
                     <Icon size={22} className="text-primary-600" />
                   </div>
-                  <div>
-                    <p className="text-[11px] font-semibold text-neutral-400 font-[Poppins] uppercase tracking-[0.16em] mb-1.5">
+                  <div className="space-y-1.5">
+                    <p className="text-[11px] font-semibold text-neutral-400 font-[Poppins] uppercase tracking-[0.16em]">
                       {card.label}
                     </p>
                     <p className="text-neutral-900 font-[Poppins] font-semibold text-lg sm:text-xl leading-snug">
                       {card.primary}
                     </p>
                     {card.secondary && (
-                      <p className="text-neutral-500 font-[Poppins] text-sm mt-1.5 leading-relaxed">
+                      <p className="text-neutral-500 font-[Poppins] text-sm leading-relaxed">
                         {card.secondary}
                       </p>
                     )}
@@ -68,12 +71,13 @@ export function EventDetails() {
           })}
         </div>
 
-        <ScrollReveal delay={0.25} className="w-full mt-8 sm:mt-10">
-          <div className="surface-card p-6 sm:p-8 text-center max-w-xl mx-auto">
-            <h4 className="font-display text-lg sm:text-xl text-neutral-800 font-semibold mb-5">
+        <ScrollReveal delay={0.25} className="w-full max-w-md mt-12 sm:mt-14">
+          <div className="flex flex-col items-center text-center gap-6">
+            <h4 className="font-display text-lg sm:text-xl text-neutral-800 font-semibold">
               Como Chegar & Confirmar
             </h4>
-            <div className="flex flex-col sm:flex-row gap-3">
+
+            <div className="flex flex-col sm:flex-row items-stretch justify-center gap-3 sm:gap-4 w-full">
               <Button
                 variant="primary"
                 size="lg"
