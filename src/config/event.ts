@@ -30,8 +30,8 @@ export const EVENT_CONFIG = {
   /** Link do Google Maps (ATUALIZAR) */
   googleMapsUrl: '#',
 
-  /** Número do WhatsApp com código do país (ATUALIZAR) */
-  whatsappNumber: '',
+  /** Número do WhatsApp com código do país */
+  whatsappNumber: '559292173593',
 
   /** Mensagem pré-preenchida do WhatsApp */
   whatsappMessage: 'Olá! Gostaria de saber mais sobre a festa de 15 anos da Bárbara Sophia! 🎉',
