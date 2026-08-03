@@ -27,8 +27,8 @@ export const EVENT_CONFIG = {
   /** Dress code */
   dressCode: 'Esporte Fino',
 
-  /** Link do Google Maps (ATUALIZAR) */
-  googleMapsUrl: '#',
+  /** Link do Google Maps */
+  googleMapsUrl: 'https://maps.app.goo.gl/yXcDmLqWz5tVFR1YA',
 
   /** Número do WhatsApp com código do país */
   whatsappNumber: '559292173593',

@@ -74,14 +74,14 @@ const GIFTS: GiftItem[] = [
 function BrandMark({ brand }: { brand: BrandLogo }) {
   return (
     <div
-      className="h-12 min-w-[100px] max-w-[140px] px-3 flex items-center justify-center"
+      className="w-full h-14 px-4 flex items-center justify-center"
       title={brand.alt}
     >
       <img
         src={brand.src}
         alt={brand.alt}
         loading="lazy"
-        className="max-h-9 w-auto max-w-full object-contain"
+        className="h-10 w-[160px] object-contain"
       />
     </div>
   )
@@ -122,14 +122,16 @@ export function GiftSuggestions() {
                     Onde encontrar
                   </p>
 
-                  <div className="flex flex-wrap items-center justify-center gap-1">
+                  <div className="w-full flex flex-col items-center gap-2">
                     {gift.brands.map((brand) => (
                       <BrandMark key={brand.alt} brand={brand} />
                     ))}
                     {gift.brandFallback && (
-                      <span className="h-12 min-w-[100px] px-4 inline-flex items-center justify-center text-sm font-[Poppins] font-semibold tracking-wide text-neutral-700">
-                        {gift.brandFallback}
-                      </span>
+                      <div className="w-full h-14 px-4 flex items-center justify-center">
+                        <span className="text-sm font-[Poppins] font-semibold tracking-wide text-neutral-700">
+                          {gift.brandFallback}
+                        </span>
+                      </div>
                     )}
                   </div>
 
