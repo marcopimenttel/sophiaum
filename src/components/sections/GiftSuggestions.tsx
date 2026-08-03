@@ -6,6 +6,8 @@ import { AlertCircle } from 'lucide-react'
 interface BrandLogo {
   src: string
   alt: string
+  /** Amplia logos que vêm com muito espaço interno no arquivo */
+  scale?: number
 }
 
 interface GiftItem {
@@ -30,14 +32,14 @@ const GIFTS: GiftItem[] = [
     details: 'Tam. 35/36',
     brands: [
       { src: '/images/brands/ana-capri.png', alt: 'Ana Capri' },
-      { src: '/images/brands/vizzano.png', alt: 'Vizzano' },
+      { src: '/images/brands/vizzano.png', alt: 'Vizzano', scale: 2.1 },
     ],
   },
   {
     title: 'Perfumes',
     details: 'Fragrâncias doces',
     brands: [
-      { src: '/images/brands/o-boticario.svg', alt: 'O Boticário' },
+      { src: '/images/brands/o-boticario.svg', alt: 'O Boticário', scale: 2.2 },
       { src: '/images/brands/top-internacional.png', alt: 'Top Internacional' },
     ],
   },
@@ -45,7 +47,7 @@ const GIFTS: GiftItem[] = [
     title: 'Joias',
     details: 'Ouro ou prata 925 banhada a ouro',
     brands: [
-      { src: '/images/brands/vivara.png', alt: 'Vivara' },
+      { src: '/images/brands/vivara.png', alt: 'Vivara', scale: 1.85 },
       { src: '/images/brands/morana.webp', alt: 'Morana' },
     ],
     note: 'Alergia a bijuterias',
@@ -72,16 +74,19 @@ const GIFTS: GiftItem[] = [
 ]
 
 function BrandMark({ brand }: { brand: BrandLogo }) {
+  const scale = brand.scale ?? 1
+
   return (
     <div
-      className="w-full h-14 px-4 flex items-center justify-center"
+      className="w-full h-16 px-3 flex items-center justify-center overflow-hidden"
       title={brand.alt}
     >
       <img
         src={brand.src}
         alt={brand.alt}
         loading="lazy"
-        className="h-10 w-[160px] object-contain"
+        className="h-11 w-[170px] object-contain origin-center"
+        style={{ transform: scale !== 1 ? `scale(${scale})` : undefined }}
       />
     </div>
   )
@@ -122,13 +127,13 @@ export function GiftSuggestions() {
                     Onde encontrar
                   </p>
 
-                  <div className="w-full flex flex-col items-center gap-2">
+                  <div className="w-full flex flex-col items-center gap-1.5">
                     {gift.brands.map((brand) => (
                       <BrandMark key={brand.alt} brand={brand} />
                     ))}
                     {gift.brandFallback && (
-                      <div className="w-full h-14 px-4 flex items-center justify-center">
-                        <span className="text-sm font-[Poppins] font-semibold tracking-wide text-neutral-700">
+                      <div className="w-full h-16 px-3 flex items-center justify-center">
+                        <span className="text-2xl font-[Poppins] font-bold tracking-wide text-neutral-800">
                           {gift.brandFallback}
                         </span>
                       </div>
