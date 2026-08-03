@@ -14,7 +14,7 @@ export function EventDetails() {
     timeZone: 'America/Manaus',
   })
 
-  const formattedTime = EVENT_CONFIG.timeLabel
+  const formattedTime = '22:00'
 
   const whatsappUrl = EVENT_CONFIG.whatsappNumber
     ? `https://wa.me/${EVENT_CONFIG.whatsappNumber}?text=${encodeURIComponent(EVENT_CONFIG.whatsappMessage)}`
