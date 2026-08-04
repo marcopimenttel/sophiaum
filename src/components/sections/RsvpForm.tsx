@@ -52,15 +52,16 @@ export function RsvpForm() {
   }
 
   return (
-    <section id="rsvp" className="relative page-section overflow-hidden bg-neutral-950 text-white">
+    <section id="rsvp" className="relative page-section overflow-hidden text-white bg-gradient-to-b from-secondary-800 via-secondary-700 to-primary-800">
       <div className="absolute inset-0 pointer-events-none">
         <img
           src={HERO_IMAGES[2]}
           alt=""
-          className="w-full h-full object-cover blur-md opacity-35 scale-105"
+          className="w-full h-full object-cover blur-md opacity-20 scale-105"
           loading="lazy"
         />
-        <div className="absolute inset-0 bg-gradient-to-b from-neutral-950 via-neutral-950/90 to-neutral-950" />
+        <div className="absolute inset-0 bg-gradient-to-b from-secondary-900/75 via-secondary-800/80 to-primary-900/85" />
+        <div className="absolute -top-24 left-1/2 -translate-x-1/2 w-[520px] h-[520px] rounded-full bg-secondary-500/25 blur-[120px]" />
       </div>
 
       <div className="section-container relative z-10 flex flex-col items-center">
@@ -72,7 +73,7 @@ export function RsvpForm() {
           Confirmação de Presença
         </SectionTitle>
 
-        <div className="w-full max-w-md sm:max-w-lg mx-auto">
+        <div className="w-full max-w-md sm:max-w-lg mx-auto rounded-3xl border border-white/20 bg-secondary-950/35 backdrop-blur-md px-5 py-8 sm:px-8 sm:py-10 shadow-2xl shadow-secondary-950/30">
           <AnimatePresence mode="wait">
             {submitted ? (
               <motion.div
