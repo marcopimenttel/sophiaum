@@ -7,7 +7,18 @@ import { Button } from '../ui/Button'
 import { Toast } from '../ui/Toast'
 import { useRsvps } from '../../hooks/useRsvps'
 import { maskPhone, isValidPhone } from '../../utils/masks'
-import { HERO_IMAGES } from '../../config/event'
+import { EVENT_CONFIG, HERO_IMAGES } from '../../config/event'
+
+function buildRsvpWhatsAppUrl(nome: string, contato: string) {
+  const message = [
+    `Olá! Confirmo minha presença na festa de 15 anos da ${EVENT_CONFIG.name}.`,
+    '',
+    `Nome: ${nome}`,
+    `WhatsApp: ${contato}`,
+  ].join('\n')
+
+  return `https://wa.me/${EVENT_CONFIG.whatsappNumber}?text=${encodeURIComponent(message)}`
+}
 
 export function RsvpForm() {
   const { submitRsvp, loading } = useRsvps()
@@ -36,19 +47,30 @@ export function RsvpForm() {
     e.preventDefault()
     if (!validate()) return
 
-    const success = await submitRsvp({
-      nome: nome.trim(),
-      whatsapp: whatsapp.trim(),
+    if (!EVENT_CONFIG.whatsappNumber) {
+      setToast({ message: 'WhatsApp de confirmação não configurado.', type: 'error', visible: true })
+      return
+    }
+
+    const nomeTrim = nome.trim()
+    const whatsappTrim = whatsapp.trim()
+
+    // Salva no painel admin (se Supabase estiver ok) e abre WhatsApp
+    await submitRsvp({
+      nome: nomeTrim,
+      whatsapp: whatsappTrim,
       tem_acompanhante: false,
       quantidade_acompanhantes: 0,
     })
 
-    if (success) {
-      setSubmitted(true)
-      setToast({ message: 'Presença confirmada! Nos vemos lá.', type: 'success', visible: true })
-    } else {
-      setToast({ message: 'Erro ao enviar confirmação. Tente novamente.', type: 'error', visible: true })
-    }
+    window.open(buildRsvpWhatsAppUrl(nomeTrim, whatsappTrim), '_blank', 'noopener,noreferrer')
+
+    setSubmitted(true)
+    setToast({
+      message: 'Quase lá! Envie a mensagem no WhatsApp para confirmar.',
+      type: 'success',
+      visible: true,
+    })
   }
 
   return (
@@ -87,7 +109,7 @@ export function RsvpForm() {
                 </div>
                 <h3 className="font-script text-4xl sm:text-5xl text-white">Presença Confirmada!</h3>
                 <p className="text-neutral-300 font-[Poppins] text-sm sm:text-base leading-relaxed max-w-sm mx-auto">
-                  Sua confirmação foi salva com sucesso. Estamos ansiosos para celebrar este momento especial com você!
+                  Abra o WhatsApp e envie a mensagem para finalizar sua confirmação. Estamos ansiosos para celebrar com você!
                 </p>
                 <div className="pt-4">
                   <Button
